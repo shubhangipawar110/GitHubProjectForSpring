@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Creating collection of beans in <beans> tag-->
+<beans  
+        xmlns="http://www.springframework.org/schema/beans"  
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+        xmlns:p="http://www.springframework.org/schema/p"  
+        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">  
+      
+      
+     
+<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+<property name="driverClassName" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
+<property name="url" value="jdbc:sqlserver://localhost:1433;databaseName = DemoDatabase"/>
+<property name="username" value="sa"/>
+<property name="password" value="AEMS@123"/>
+</bean>     
+< <bean id="jt" class="org.springframework.jdbc.core.JdbcTemplate">
+<property name="dataSource" ref="dataSource"/>
+</bean> 
+<bean id="demoDao" class="DemoDao" autowire="byName">
+<!-- <property name="jt" ref="jt"/> -->
+</bean>
+
+<bean id="demoBean" class="DemoBean">
+<property name="id" value="1"/>
+<property name="name" value="abc"/>
+<property name="password" value="abc"/>
+</bean>
+ </beans>
